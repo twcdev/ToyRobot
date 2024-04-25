@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToyRobot
+﻿namespace ToyRobot
 {
     public class Program
     {

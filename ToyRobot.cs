@@ -10,17 +10,16 @@ namespace ToyRobot
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public string Facing { get; set; }
+        public Direction Facing { get; set; }
         private const int GridSize = 5;
-        private readonly string[] ValidDirections = new string[] { "NORTH", "EAST", "SOUTH", "WEST" };
 
-        public bool Place(int x, int y, string facing)
+        public bool Place(int x, int y, Direction facing)
         {
-            if (x >= 0 && x < GridSize && y >= 0 && y < GridSize && ValidDirections.Contains(facing.ToUpper()))
+            if (x >= 0 && x < GridSize && y >= 0 && y < GridSize)
             {
                 X = x;
                 Y = y;
-                Facing = facing.ToUpper();
+                Facing = facing;
                 return true;
             }
             return false;
@@ -30,28 +29,28 @@ namespace ToyRobot
         {
             switch (Facing)
             {
-                case "NORTH":
+                case Direction.NORTH:
                     if (Y < GridSize - 1)
                     {
                         Y++;
                         return true;
                     }
                     break;
-                case "EAST":
+                case Direction.EAST:
                     if (X < GridSize - 1)
                     {
                         X++;
                         return true;
                     }
                     break;
-                case "SOUTH":
+                case Direction.SOUTH:
                     if (Y > 0)
                     {
                         Y--;
                         return true;
                     }
                     break;
-                case "WEST":
+                case Direction.WEST:
                     if (X > 0)
                     {
                         X--;
@@ -68,17 +67,17 @@ namespace ToyRobot
         {
             switch (Facing)
             {
-                case "NORTH":
-                    Facing = "WEST";
+                case Direction.NORTH:
+                    Facing = Direction.WEST;
                     break;
-                case "WEST":
-                    Facing = "SOUTH";
+                case Direction.WEST:
+                    Facing = Direction.SOUTH;
                     break;
-                case "SOUTH":
-                    Facing = "EAST";
+                case Direction.SOUTH:
+                    Facing = Direction.EAST;
                     break;
-                case "EAST":
-                    Facing = "NORTH";
+                case Direction.EAST:
+                    Facing = Direction.NORTH;
                     break;
                 default:
                     break;
@@ -89,17 +88,17 @@ namespace ToyRobot
         {
             switch (Facing)
             {
-                case "NORTH":
-                    Facing = "EAST";
+                case Direction.NORTH:
+                    Facing = Direction.EAST;
                     break;
-                case "EAST":
-                    Facing = "SOUTH";
+                case Direction.EAST:
+                    Facing = Direction.SOUTH;
                     break;
-                case "SOUTH":
-                    Facing = "WEST";
+                case Direction.SOUTH:
+                    Facing = Direction.WEST;
                     break;
-                case "WEST":
-                    Facing = "NORTH";
+                case Direction.WEST:
+                    Facing = Direction.NORTH;
                     break;
                 default:
                     break;
